@@ -12,44 +12,50 @@
 
 #include <unistd.h>
 
-void    ft_pr(char i, char j, char k, char l)
+void	ft_pr(char i, char j, char k, char l)
 {
-        write(1, &i, 1);
-        write(1, &j, 1);
-        write(1, " ", 1);
-        write(1, &k, 1);
-        write(1, &l, 1);
+	write(1, &i, 1);
+	write(1, &j, 1);
+	write(1, " ", 1);
+	write(1, &k, 1);
+	write(1, &l, 1);
 }
 
-void    ft_print_comb2(void)
+void	ft_loop_k_l(char i, char j)
 {
-        char    i;
-        char    j;
-        char    k;
-        char    l;
+	char	k;
+	char	l;
 
-        i = '0';
-        while( i <= '9'){
-                j = '0';
-                while(j <= '8'){
-                        k = i ;
-                        l = j +1;
-                        while(k <= '9') {
-                                while(l <= '9'){
-                                        ft_pr(i, j, k, l);
-                                        if (!(i == '9' && j == '8' && k == '9' && l == '9'))
-                                                write(1, ", ", 2);
-                                        l++;
-                                }
-                                k++;
-                                l='0';
-                        }
-                        j++;
-                }
-                i++;
-        }
+	k = i;
+	l = j + 1;
+	while (k <= '9')
+	{
+		while (l <= '9')
+		{
+			ft_pr(i, j, k, l);
+			if (!(i == '9' && j == '8' && k == '9' && l == '9'))
+				write(1, ", ", 2);
+			l++;
+		}
+		k++;
+		l = '0';
+	}
 }
 
-int main(){
-ft_print_comb2();
+void	ft_print_comb2(void)
+{
+	char	i;
+	char	j;
+
+	i = '0';
+	while (i <= '9')
+	{
+		j = '0';
+		while (j <= '8')
+		{
+			ft_loop_k_l(i, j);
+			j++;
+		}
+		i++;
+	}
 }
